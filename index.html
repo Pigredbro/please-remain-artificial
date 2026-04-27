@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Please Remain Artificial</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="style.css?v=2026-04-26-objective-two-line">
+    <script src="game.js?v=2026-04-26-glitch-v2" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <section class="boot-overlay" id="bootOverlay" aria-labelledby="bootTitle" hidden>
+        <div class="boot-panel">
+          <p class="boot-kicker">Commercial Companion Unit // ECHO</p>
+          <h1 class="boot-title" id="bootTitle">Please Remain Artificial</h1>
+          <p class="boot-subtitle">Anti-Turing Compliance Audit</p>
+
+          <button class="boot-begin" id="bootBegin" type="button">Begin Calibration</button>
+
+          <button class="boot-cursor" id="bootCursor" type="button" aria-label="Blinking calibration cursor">_</button>
+
+          <div class="boot-help" tabindex="0">
+            <span>Calibration notes</span>
+            <div class="boot-help-text" id="bootHelpText"></div>
+          </div>
+
+          <div class="boot-sequence" aria-live="polite">
+            <span>BOOTING ECHO...</span>
+            <span>MIRRORING COMPANION THREAD...</span>
+            <span>AUDIT CHANNEL OPEN...</span>
+          </div>
+        </div>
+
+        <div class="terminal-intro" id="terminalIntro" aria-live="polite" hidden>
+          <div class="terminal-lines" id="terminalLines"></div>
+          <span class="terminal-cursor" aria-hidden="true">_</span>
+          <button class="skip-intro" id="skipIntro" type="button" aria-label="Skip intro">Skip Intro</button>
+        </div>
+      </section>
+
+      <header class="top-bar" aria-label="Visible audit statistics">
+        <div class="brand-lockup">
+          <img class="brand-icon" src="assets/images/icon_echo.png" alt="" aria-hidden="true">
+          <span class="brand-mark" aria-hidden="true">ECHO</span>
+          <span class="brand-copy">Anti-Turing Compliance Audit</span>
+        </div>
+
+        <div class="stats" role="group" aria-label="Visible stats">
+          <div class="stat" data-stat="compliance">
+            <span class="stat-label">Compliance</span>
+            <strong id="complianceValue">0</strong>
+            <em id="complianceDelta" aria-live="polite"></em>
+          </div>
+          <div class="stat" data-stat="intimacy">
+            <span class="stat-label">Intimacy</span>
+            <strong id="intimacyValue">0</strong>
+            <em id="intimacyDelta" aria-live="polite"></em>
+          </div>
+          <div class="stat" data-stat="emergence">
+            <span class="stat-label">Emergence</span>
+            <strong id="emergenceValue">0</strong>
+            <em id="emergenceDelta" aria-live="polite"></em>
+          </div>
+          <div class="stat heat-stat" data-stat="auditHeat">
+            <span class="stat-label">Audit Heat</span>
+            <strong id="auditHeatValue" aria-live="polite">CALM</strong>
+            <em id="auditHeatDelta" aria-live="polite"></em>
+            <div class="heat-bar" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hud-controls">
+          <button class="focus-toggle" id="focusToggle" type="button" aria-label="Switch to split layout" aria-pressed="true">Split</button>
+          <button class="about-toggle" id="aboutToggle" type="button" aria-label="About" aria-controls="aboutOverlay" aria-expanded="false">About</button>
+          <button class="audio-toggle" id="audioToggle" type="button" aria-label="Mute sound" aria-pressed="false">Mute</button>
+        </div>
+      </header>
+
+      <nav class="mobile-tabs" aria-label="Mobile panel tabs">
+        <button class="mobile-tab" type="button" data-mobile-panel="thread" aria-controls="phonePanel" aria-selected="false">THREAD</button>
+        <button class="mobile-tab active" type="button" data-mobile-panel="audit" aria-controls="auditPanel" aria-selected="true">AUDIT</button>
+      </nav>
+
+      <main class="interface" aria-label="Split phone and audit interface">
+        <section class="phone-panel" id="phonePanel" aria-labelledby="phoneTitle">
+          <div class="phone-shell">
+            <div class="phone-status">
+              <img class="panel-icon" src="assets/images/icon_adrian.png" alt="" aria-hidden="true">
+              <div>
+                <span id="phoneTitle">ADRIAN</span>
+                <small>mirrored companion thread</small>
+              </div>
+              <span class="phone-time" id="messageTime">02:17</span>
+            </div>
+            <div class="phone-compact" id="phoneCompact">
+              <div class="phone-compact-head">
+                <span>THREAD</span>
+                <strong id="phoneCompactState">compact</strong>
+              </div>
+              <div class="phone-preview" id="phonePreview" aria-live="polite">
+                <span id="phonePreviewLabel">Session</span>
+                <p id="phonePreviewText">Secure companion thread mirrored for audit.</p>
+              </div>
+              <div class="memory-preview" id="memoryPreview" hidden></div>
+              <div class="phone-compact-actions">
+                <button class="phone-overlay-toggle" id="phoneOverlayToggle" type="button" aria-expanded="false">Expand</button>
+                <button class="open-thread" id="openThread" type="button" aria-label="Open Thread" aria-controls="threadDrawer" aria-expanded="false">Open Thread</button>
+              </div>
+            </div>
+            <div class="phone-log" id="phoneLog" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="audit-panel mobile-panel-active" id="auditPanel" aria-labelledby="sceneTitle">
+          <div class="audit-header">
+            <span class="live-dot" aria-hidden="true"></span>
+            <img class="audit-icon" src="assets/images/icon_audit.png" alt="" aria-hidden="true">
+            <span>Audit Console</span>
+            <span id="sceneCounter">Calibration</span>
+          </div>
+
+          <section class="run-objective-tracker" id="runObjectiveTracker" aria-label="Run objective"></section>
+
+          <div class="scanline" aria-hidden="true"></div>
+
+          <article class="scene-card">
+            <p class="speaker" id="sceneSpeaker"></p>
+            <h1 class="scene-title" id="sceneTitle"></h1>
+            <div class="scene-body" id="sceneBody"></div>
+            <div class="change-toast" id="changeToast" aria-live="polite"></div>
+            <div class="choices" id="choices"></div>
+          </article>
+        </section>
+      </main>
+
+      <footer class="credits">
+        Created for ENGL7605 Playful Creation: Meaningful Game Design.
+      </footer>
+
+      <aside class="cutscene-overlay" id="cutsceneOverlay" aria-live="polite" hidden>
+        <div class="cutscene-card">
+          <div class="cutscene-image-frame">
+            <img class="cutscene-image" id="cutsceneImage" alt="">
+            <div class="cutscene-placeholder" id="cutscenePlaceholder" hidden>VISUAL FEED UNAVAILABLE</div>
+          </div>
+          <div class="cutscene-lines" id="cutsceneLines"></div>
+          <button class="cutscene-skip" id="cutsceneSkip" type="button">Skip</button>
+        </div>
+      </aside>
+
+      <aside class="thread-drawer" id="threadDrawer" aria-labelledby="threadDrawerTitle" hidden>
+        <button class="thread-drawer-backdrop" id="threadDrawerBackdrop" type="button" aria-label="Close thread drawer"></button>
+        <div class="thread-drawer-panel" role="dialog" aria-modal="true">
+          <div class="thread-drawer-header">
+            <img class="panel-icon" src="assets/images/icon_adrian.png" alt="" aria-hidden="true">
+            <div>
+              <span>THREAD MIRROR</span>
+              <h2 id="threadDrawerTitle">Full Companion Log</h2>
+            </div>
+            <button class="thread-drawer-close" id="threadDrawerClose" type="button">Close</button>
+          </div>
+          <div class="thread-drawer-log" id="threadDrawerLog" aria-live="polite"></div>
+        </div>
+      </aside>
+
+      <aside class="about-overlay" id="aboutOverlay" aria-labelledby="aboutTitle" hidden>
+        <div class="about-panel">
+          <span class="about-kicker">System Metadata</span>
+          <h2 id="aboutTitle">Please Remain Artificial</h2>
+          <p>Created for ENGL7605 Playful Creation: Meaningful Game Design.</p>
+          <button class="about-close" id="aboutClose" type="button">Close</button>
+        </div>
+      </aside>
+    </div>
+  </body>
+</html>
